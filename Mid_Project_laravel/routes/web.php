@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\EmployeeOfficerController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,4 +22,7 @@ Route::get('/', function () {
 Route::get('/home', function () {
     return view('employee.dashboard.home');
 });
+
+Route::get('/register',[EmployeeOfficerController::class,'register']);
+Route::post('/register',[EmployeeOfficerController::class,'registersubmit'])->name('register.submit');
 
