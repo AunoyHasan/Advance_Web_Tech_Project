@@ -20,9 +20,14 @@ Route::get('/', function () {
 });
 
 Route::get('/home', function () {
-    return view('employee.dashboard.home');
+    //return view('employee.dashboard.home');
 });
 
 Route::get('/register',[EmployeeOfficerController::class,'register']);
 Route::post('/register',[EmployeeOfficerController::class,'registersubmit'])->name('register.submit');
+
+Route::get('/login',[EmployeeOfficerController::class,'login']);
+Route::post('/login',[EmployeeOfficerController::class,'loginsubmit'])->name('login.submit');
+
+Route::get('/officer/home',[EmployeeOfficerController::class,'home'])->name('officer.home');
 

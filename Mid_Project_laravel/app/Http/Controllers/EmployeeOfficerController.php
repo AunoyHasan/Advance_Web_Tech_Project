@@ -38,4 +38,29 @@ class EmployeeOfficerController extends Controller
 
         return "<h1>The form is submitted with $req->name</h1>";
     }  
+
+    public function login(){
+        return view('employee.officer.login');
+    }
+
+    public function loginsubmit(Request $req){
+        $of = Officer::where('name', $req->name)->where('password', $req->password)->first();
+
+        //dd($of);
+
+        //return $of;
+        if($of){
+          //  return "ok";
+           session()->put('logged', $of->username);
+           return redirect()->route('officer.home');
+        }
+
+        session()->flash('msg', 'username password invalid');
+        return redirect()->route('login.submit');
+
+    }
+
+    public function home(){
+        return view('employee.dashboard.home');
+    }
 }

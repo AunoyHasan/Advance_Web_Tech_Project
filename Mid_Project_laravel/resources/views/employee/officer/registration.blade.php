@@ -1,5 +1,7 @@
 @extends('employee.layouts.content')
-@section('content')
+<br><br>    
+<center>   
+    <h3>Regiatration</h3> 
     <form action="{{route('register.submit')}}" method="post">
         {{csrf_field()}}
        
@@ -27,8 +29,10 @@
         @error('address')
         <span class="text-danger">{{$message}}</span><br>
         @enderror
-       
+
+        <br>
+        <input type="reset" value="Reset">
         <input type="submit" value="Registration">
 
     </form>
-@endsection
+</center>    
