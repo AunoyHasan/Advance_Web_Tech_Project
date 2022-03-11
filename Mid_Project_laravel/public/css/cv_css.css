@@ -1,0 +1,168 @@
+div
+{
+    border-radius: 5px;
+    }
+#header
+{
+    position: fixed;
+    z-index: 1;
+    height:40px;
+    width: 100%;
+    background-color: rebeccapurple;
+    margin-bottom: 10px
+    }
+
+#link{
+  color:green;
+}
+.tablebody{
+  padding-top: 80px;
+}
+
+#name {
+    float:left;
+	margin-left: 20px;
+	padding-bottom: 10px;
+	font-size: 16px;
+	font-family: Verdana, sans-serif;
+	color: #ffffff;
+}
+
+#email{
+    float:right;
+    margin-right: 20px;
+	padding-bottom: 10px;
+	font-size: 16px;
+	font-family: Verdana, sans-serif;
+	color: #ffffff;
+}
+
+#contact
+{
+    margin-left:45%;
+    padding-bottom: 10px;
+  	font-size: 16px;
+  	font-family: Verdana, sans-serif;
+  	color: #ffffff;
+    }
+
+img{
+  border-radius: 150px;
+}
+
+a{
+  color: yellow;
+  text-decoration: none;
+}
+a:hover {
+    font-weight: bold;
+    color: White;
+
+}
+#dashboard{
+  height: 170px;
+  width: 400px;
+  color: red;
+  background-color: lightcyan;
+  font-family:Century Gothic;
+  padding-left: 66px;
+}
+
+.dashAllbody{
+background: url(/css/loginback.png);
+}
+
+h4{
+  text-shadow: -2px 2px 1px purple;
+
+}
+h5{
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+#loginbody {
+    border: solid 120px rebeccapurple;
+    padding: 15px;
+    width: 627px;
+    border-radius: 30%;
+    height: 650px;
+
+    font-family:Century Gothic;
+
+
+}
+.right
+{
+    float: left;
+    margin-top: 50px;
+    padding-left:5px;
+    /*margin-right: -10px;
+    margin-left: 14%;*/
+    height: auto;
+    width: 99%;
+    background-color: #E3EDD8;
+    }
+
+/*.left
+{
+    float: left;
+    margin-top: 50px;
+    /*margin-right: -90px;
+    height: relative;
+    width: 10%;
+    background-color: #4160E8;
+    }*/
+
+#footer
+{
+    height:40px;
+    clear:both;
+    position: relative;
+    background-color: purple;
+    }
+
+h3
+{
+    text-decoration: underline;
+    }
+
+#job-responsibilities
+{
+    padding: 1px;
+    }
+.job-title
+{
+    font-weight: bold;
+    }
+table
+{
+  border: 1px solid red;
+  margin-top: 25;
+    }
+td
+{
+    padding: 2px;
+    border: 1px solid #E88741;
+    }
+
+#course-name
+{
+    font-weight:bold;
+    }
+
+#company-name
+{
+    height:2px;
+    text-decoration:underline;
+    }
+#job-title
+{
+    height: 5px;
+    }
+.job-duration
+{
+    float:right;
+    }
+#heading
+{
+    font-weight:bold;
+    }
