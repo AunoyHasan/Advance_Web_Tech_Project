@@ -7,7 +7,7 @@
         <h4 align="right">
         <a href="{{route('officer.profile')}}" class="btn btn-primary" align="right">Profile </a>
         <a href="{{route('officer.logout')}}" class="btn btn-primary">Logout </a>
-        </h4>
+        </h3>
         @yield('content')
         
     </body>

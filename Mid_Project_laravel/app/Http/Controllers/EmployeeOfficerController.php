@@ -58,6 +58,17 @@ class EmployeeOfficerController extends Controller
          return redirect()->route('login.submit');
     }
 
+    public function officerList(){
+        $officers = Officer::all(); //select * from students and also converts it into collection of student oobject
+        return view('employee.officer.list')->with('officers',$officers);
+    }
+
+    public function details(Request $req){
+        return view('officer.details')
+        ->with('name',$req->name)
+        ->with('id',$req->id - 839);
+    }
+
     public function home(){
         $name = session()->get('logged');
         $of = Officer::where('name', $name)->first();
