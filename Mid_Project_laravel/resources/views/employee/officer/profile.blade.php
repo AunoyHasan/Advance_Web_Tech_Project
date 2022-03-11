@@ -1,7 +1,7 @@
 @extends('employee.layouts.content')
 @section('content')
 <br><br>
-    <h1 align="center">Details of {{$name}}</h1>
+    <h1 align="center">Welcome {{$name}} to visit your profile</h1>
     <center>
     <table border="1">
     <tr align="center">
@@ -22,3 +22,4 @@
     </center>
     <br><br>
 @endsection
+

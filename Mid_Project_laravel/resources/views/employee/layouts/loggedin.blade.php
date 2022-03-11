@@ -5,7 +5,6 @@
     <body>
         <h3 align="center">Welcome {{Session::get('logged')}}</h3>
         <h4 align="right">
-        <a href="{{route('officer.profile')}}" class="btn btn-primary" align="right">Profile </a>
         <a href="{{route('officer.logout')}}" class="btn btn-primary">Logout </a>
         </h3>
         @yield('content')

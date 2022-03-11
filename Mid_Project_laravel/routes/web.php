@@ -38,6 +38,7 @@ Route::get('/officer/edit/{id}',[EmployeeOfficerController::class,'edit'])->name
 Route::get('/officer/delete/{id}',[EmployeeOfficerController::class,'delete'])->name('officer.delete');
 Route::get('/officer/mail/{id}',[EmployeeOfficerController::class,'mail'])->name('officer.mail');
 
-Route::get('/officer/profile',[EmployeeOfficerController::class,'profile'])->name('officer.profile');
+Route::get('/officer/profile/{id}/{name}/{email}/{address}/{created_at}',[EmployeeOfficerController::class,'profile'])->name('officer.profile');
 Route::get('/officer/logout',[EmployeeOfficerController::class,'logout'])->name('officer.logout');
+
 

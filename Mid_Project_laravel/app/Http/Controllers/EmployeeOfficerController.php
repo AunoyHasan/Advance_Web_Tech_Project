@@ -77,6 +77,23 @@ class EmployeeOfficerController extends Controller
         $of = Officer::where('name', $name)->first();
         //return $of;
         return view('employee.officer.home')->with('of', $of);
+
+        
+    }
+
+    public function profile(Request $req){
+        // $name = session()->get('logged');
+        // $o = Officer::where('name', $name)->first();
+        // //return $of;
+        // return view('employee.officer.profile')->with('o', $o);
+
+        return view('employee.officer.details')
+        ->with('name',$req->name)
+        ->with('id',$req->id - 839)
+        ->with('email',$req->email)
+        ->with('address',$req->address)
+        ->with('created_at',$req->created_at);
+
     }
 
     public function logout(){
