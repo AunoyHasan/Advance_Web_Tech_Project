@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Models\Officer;
 
+use Session;
+
 class EmployeeOfficerController extends Controller
 {
     //
@@ -61,5 +63,10 @@ class EmployeeOfficerController extends Controller
         $of = Officer::where('name', $name)->first();
         //return $of;
         return view('employee.officer.home')->with('of', $of);
+    }
+
+    public function logout(){
+        session::flush();
+        return redirect()->route('login.submit');
     }
 }
