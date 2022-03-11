@@ -64,9 +64,12 @@ class EmployeeOfficerController extends Controller
     }
 
     public function details(Request $req){
-        return view('officer.details')
+        return view('employee.officer.details')
         ->with('name',$req->name)
-        ->with('id',$req->id - 839);
+        ->with('id',$req->id - 839)
+        ->with('email',$req->email)
+        ->with('address',$req->address)
+        ->with('created_at',$req->created_at);
     }
 
     public function home(){

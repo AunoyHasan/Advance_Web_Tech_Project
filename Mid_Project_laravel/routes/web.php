@@ -32,8 +32,11 @@ Route::post('/login',[EmployeeOfficerController::class,'loginsubmit'])->name('lo
 Route::get('/officer/home',[EmployeeOfficerController::class,'home'])->name('officer.home');
 
 Route::get('/list',[EmployeeOfficerController::class,'officerList'])->name('officer.list');
-Route::get('/officer/details/{id}/{name}',[EmployeeOfficerController::class,'details'])->name('officer.details');
+Route::get('/officer/details/{id}/{name}/{email}/{address}/{created_at}',[EmployeeOfficerController::class,'details'])->name('officer.details');
+
 Route::get('/officer/edit/{id}',[EmployeeOfficerController::class,'edit'])->name('officer.edit');
+Route::get('/officer/delete/{id}',[EmployeeOfficerController::class,'delete'])->name('officer.delete');
+Route::get('/officer/mail/{id}',[EmployeeOfficerController::class,'mail'])->name('officer.mail');
 
 Route::get('/officer/profile',[EmployeeOfficerController::class,'profile'])->name('officer.profile');
 Route::get('/officer/logout',[EmployeeOfficerController::class,'logout'])->name('officer.logout');
