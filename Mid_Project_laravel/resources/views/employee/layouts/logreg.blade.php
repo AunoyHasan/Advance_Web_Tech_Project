@@ -4,9 +4,5 @@
     </head>
     <body>
         <br>
-        @include('employee.includes.header')
-        @yield('content')
-        @include('employee.includes.footer')
-        
     </body>
 </html>

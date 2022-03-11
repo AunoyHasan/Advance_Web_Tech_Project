@@ -31,3 +31,6 @@ Route::post('/login',[EmployeeOfficerController::class,'loginsubmit'])->name('lo
 
 Route::get('/officer/home',[EmployeeOfficerController::class,'home'])->name('officer.home');
 
+Route::get('/officer/profile',[EmployeeOfficerController::class,'profile'])->name('officer.profile');
+Route::get('/officer/logout',[EmployeeOfficerController::class,'logout'])->name('officer.logout');
+

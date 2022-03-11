@@ -35,8 +35,9 @@ class EmployeeOfficerController extends Controller
         $of->address = $req->address;
         $of->salary=5000;
         $of->save(); //runs query in db
-
-        return "<h1>The form is submitted with $req->name</h1>";
+        
+        session()->flash('msg', 'Regiatration Succesful');
+        return redirect()->route('login.submit');
     }  
 
     public function login(){
@@ -45,22 +46,20 @@ class EmployeeOfficerController extends Controller
 
     public function loginsubmit(Request $req){
         $of = Officer::where('name', $req->name)->where('password', $req->password)->first();
-
         //dd($of);
-
-        //return $of;
         if($of){
-          //  return "ok";
-           session()->put('logged', $of->username);
-           return redirect()->route('officer.home');
+            session()->put('logged', $of->name);
+            return redirect()->route('officer.home');
         }
 
-        session()->flash('msg', 'username password invalid');
-        return redirect()->route('login.submit');
-
+         session()->flash('msg', 'username password invalid');
+         return redirect()->route('login.submit');
     }
 
     public function home(){
-        return view('employee.dashboard.home');
+        $name = session()->get('logged');
+        $of = Officer::where('name', $name)->first();
+        //return $of;
+        return view('employee.officer.home')->with('of', $of);
     }
 }
