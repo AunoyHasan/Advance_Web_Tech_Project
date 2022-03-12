@@ -37,6 +37,7 @@ public function adminLoginSubmit(Request $req){
                           $ad = Adminregistration::where('username',$req->username)->where('password',md5($req->password))->first();
 
                          if($ad) {
+                            session()->flush();
                             session()->put('username',$ad->username);
                             session()->flash('msg','login successful!');
                             return redirect()->route('adminDashboard');

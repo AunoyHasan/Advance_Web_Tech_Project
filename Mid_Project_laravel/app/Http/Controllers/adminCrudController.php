@@ -8,7 +8,7 @@ use App\Models\Adminregistration;
 class adminCrudController extends Controller
 {
   public function viewAllAdmin(){
-      $admins = Adminregistration::all();
+      $admins = Adminregistration::select('id','name','username','email','gender','pro_pic')->get();
       return view('viewAllAdmin')->with('admins',$admins);
     }
 

@@ -6,6 +6,11 @@
 
   <div class="tablebody">
  <h4 class="text-success">All Admins List</h4>
+ <h4>
+<a href="{{ route('generatePDF_allAdmin') }}">
+     <img src="css/Downloadpdf.png" height="100px" >
+ </a>
+</h4>
 <h4 class="text-success" >  {{session()->get('msg2')}} </h4>
 <h4 class="text-success" >  {{session()->get('msg3')}} </h4>
 <table border="1" align="center">

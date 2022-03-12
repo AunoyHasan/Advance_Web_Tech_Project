@@ -5,6 +5,7 @@ use App\Http\Controllers\adminController;
 use App\Http\Controllers\adminCrudController;
 
 use App\Http\Controllers\GoogleController;
+use App\Http\Controllers\PDFController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -38,3 +39,6 @@ Route::get('/adminDelete/{id}',[adminCrudController::class,'adminDelete'])->name
 
 Route::get('auth/google', [GoogleController::class, 'redirectToGoogle']);
 Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);
+
+Route::get('generate-pdf', [PDFController::class, 'generatePDF'])->name('generate-pdf');
+Route::get('generatePDF_allAdmin', [PDFController::class, 'generatePDF_allAdmin'])->name('generatePDF_allAdmin');

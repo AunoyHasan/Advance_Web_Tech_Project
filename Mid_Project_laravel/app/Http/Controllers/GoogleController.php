@@ -35,6 +35,7 @@ class GoogleController extends Controller
             if($finduser){
 
                 Auth::login($finduser);
+                session()->flush();
                 session()->put('name',$finduser->name);
 
                 session()->flash('msg','login successful with existing google account!');
