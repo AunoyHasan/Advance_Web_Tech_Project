@@ -9,15 +9,22 @@
 <center>
 <table border="1">
     <tr align="center">
-        <th>Name </th>
-        <th>Email</th>
+        <th>Prodict_Name </th>
+        <th>Quantity</th>
+        <th>Price</th>
+        <th>Category</th>
+        <th>Image</th>
         <th>Action</th>
 
     </tr>
-    @foreach($officers as $o)
+    @foreach($products as $o)
         <tr align="center">
-            <td><a href="{{route('officer.details',['id'=>$o->id+839, 'name'=>$o->name, 'email'=>$o->email, 'address'=>$o->address, 'created_at'=>$o->created_at])}}">{{$o->name}}</a></td>
-            <td>{{$o->email}}</td>
+            <td>{{$o->pname}}</a></td>
+            <td>{{$o->quantity}}</td>
+            <td>{{$o->price}}</td>
+            <td>{{$o->category}}</td>
+            <td> <img src="{{asset($o->picture)}}" height="100px" width="100px" > </td>
+
             <td>
                 <a class="btn btn-primary" href="{{route('officer.edit',['id'=>encrypt($o->id)])}}">Edit</a>
                 <a class="btn btn-primary" href="{{route('officer.delete',['id'=>encrypt($o->id)])}}">Delete</a>

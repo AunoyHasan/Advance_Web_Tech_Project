@@ -1,6 +1,8 @@
 @extends('employee.layouts.content')
 @section('content')
 <br><br>
+
+<a href={{route('officer.home')}} class="btn btn-primary">Home</a>
     <h1 align="center">Details of {{$name}}</h1>
     <center>
     <table border="1">

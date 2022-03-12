@@ -31,7 +31,12 @@
         <span class="text-danger">{{$message}}</span><br>
         @enderror
 
-        <br>
+        <input type="file" name="image" enctype="multipart/form-data">
+        @error('image')
+        <span class="text-danger">{{$message}}</span><br>
+        @enderror
+
+        <br><br>
         <input type="reset" class="btn btn-primary" value="Reset">
         <input type="submit" class="btn btn-primary" value="Registration">
 

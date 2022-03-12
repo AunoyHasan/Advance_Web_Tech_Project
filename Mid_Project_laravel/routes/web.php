@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\EmployeeOfficerController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +30,9 @@ Route::post('/register',[EmployeeOfficerController::class,'registersubmit'])->na
 Route::get('/login',[EmployeeOfficerController::class,'login']);
 Route::post('/login',[EmployeeOfficerController::class,'loginsubmit'])->name('login.submit');
 
+//reset password
+//Route::get('/password',[EmployeeOfficerController::class,'resetPassword'])->name('officer.password');
+
 Route::get('/officer/home',[EmployeeOfficerController::class,'home'])->name('officer.home');
 
 Route::get('/list',[EmployeeOfficerController::class,'officerList'])->name('officer.list');
@@ -40,5 +44,15 @@ Route::get('/officer/mail/{id}',[EmployeeOfficerController::class,'mail'])->name
 
 Route::get('/officer/profile/{id}/{name}/{email}/{address}/{created_at}',[EmployeeOfficerController::class,'profile'])->name('officer.profile');
 Route::get('/officer/logout',[EmployeeOfficerController::class,'logout'])->name('officer.logout');
+
+
+//Product Controller
+Route::get('/addproduct',[ProductController::class,'addProduct']);
+Route::post('/addproduct',[ProductController::class,'addProductSubmit'])->name('product.addproduct');
+
+Route::get('/product/home',[ProductController::class,'home'])->name('product.home');
+
+Route::get('/product/list',[ProductController::class,'productList'])->name('product.list');
+
 
 

@@ -14,15 +14,16 @@
                 </td>
             </tr>
 
+        
             <tr>
                  <td> 
-                 <a href="{{route('officer.details',['id'=>$of->id+839, 'name'=>$of->name, 'email'=>$of->email, 'address'=>$of->address, 'created_at'=>$of->created_at])}}"> Profile</a>
+                 <a href="{{route('officer.profile',['id'=>$of->id+839, 'name'=>$of->name, 'email'=>$of->email, 'address'=>$of->address, 'created_at'=>$of->created_at])}}"> Profile</a>
                  </td>
             </tr>
             
             <tr>
                  <td> 
-                    <a href="{{route('officer.logout')}}"> Product Pannel</a>
+                    <a href="{{route('product.home')}}"> Product Pannel</a>
                  </td>
             </tr>
 

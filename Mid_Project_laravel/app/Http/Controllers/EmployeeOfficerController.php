@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\ProductController;
 
 use App\Models\Officer;
+use App\Models\Supplier;
 
 use Session;
 
@@ -16,6 +18,9 @@ class EmployeeOfficerController extends Controller
     }
     public function registersubmit(Request $req)
     {
+        //return $req->file('image')->getClientOriginalName();
+       // return $req->file('image')->getClientOriginalExtension();
+
         $this->validate($req,
         [
             'name'=>'required|regex:/^[A-Z a-z]+$/',
@@ -23,6 +28,7 @@ class EmployeeOfficerController extends Controller
             'conf_password'=>'required|same:password',
             "email"=>"required|email|unique:officers,email",
             "address"=>"required",
+            'image'=>'required|mimes:jpg,png',
         ],
         [
             'name.required'=>'Please provide name',
@@ -35,7 +41,9 @@ class EmployeeOfficerController extends Controller
         $of->email = $req->email;
         $of->password = $req->password;
         $of->address = $req->address;
-        $of->salary=5000;
+        $of->salary = 5000;
+        //$of->image = 'images/profile.png';
+        //$of->image = 'images/profile.png';
         $of->save(); //runs query in db
         
         session()->flash('msg', 'Regiatration Succesful');
@@ -86,8 +94,7 @@ class EmployeeOfficerController extends Controller
         // $o = Officer::where('name', $name)->first();
         // //return $of;
         // return view('employee.officer.profile')->with('o', $o);
-
-        return view('employee.officer.details')
+        return view('employee.officer.profile')
         ->with('name',$req->name)
         ->with('id',$req->id - 839)
         ->with('email',$req->email)
@@ -99,5 +106,10 @@ class EmployeeOfficerController extends Controller
     public function logout(){
         session::flush();
         return redirect()->route('login.submit');
+    }
+
+    public function edit(Request $req){
+        $of = Officer::where('id',decrypt($req->id))->first();
+        return $of;
     }
 }
