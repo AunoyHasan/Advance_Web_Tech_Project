@@ -13,6 +13,12 @@ use Laravel\Socialite\Facades\Socialite;
 
 use Illuminate\Http\Request;
 use App\Models\Adminregistration;
+use App\Models\Customer;
+use App\Models\Product;
+use App\Models\Officer;
+use App\Models\Cperformance;
+
+
 
 class adminController extends Controller
 {
@@ -61,12 +67,24 @@ public function adminLoginSubmit(Request $req){
 
                                 $admin=Adminregistration::where('username',session()->get('username'))->first();
 
+                                $userCount = Customer::select('id')->get()->count();
+                                $productCount=Product::select('id')->get()->count();
+                                $employeeCount=Officer::select('id')->get()->count();
+                                $performance=Cperformance::select('Year','Sales','Expenses')->get();
+                                $data="";
 
+                                foreach ($performance as $key => $val) {
+                                  $data.= "['".$val->Year."',".$val->Sales.",".$val->Expenses."],";
+                                }
 
-                                return view('adminDashboard')->with('admin',$admin)
+                                return view('adminDashboard',compact('data'))->with('admin',$admin)
                                                              ->with('allAdmin',$allAdmins)
                                                              ->with('totalMales',$totalMales)
-                                                             ->with('totalFemales',$totalFemales);
+                                                             ->with('totalFemales',$totalFemales)
+                                                             ->with('userCount',$userCount)
+                                                             ->with('productCount',$productCount)
+                                                             ->with('performance',$performance)
+                                                             ->with('employeeCount',$employeeCount);
 
                   }
 

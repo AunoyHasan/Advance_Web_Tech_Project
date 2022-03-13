@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Adminregistration;
+use App\Models\Customer;
+use App\Models\Product;
+use App\Models\Officer;
 use PDF;
 
 class PDFController extends Controller
@@ -13,16 +16,34 @@ class PDFController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function generatePDF()
+     public function generatePDF_allProduct()
+     {
+       $allProduct = Product::select('id','pname','quantity','price','category')->get();
+
+         $pdf = PDF::loadView('pdfAllProduct', compact('allProduct'));
+
+         return $pdf->download('allProductRecord.pdf');
+
+
+     }
+    public function generatePDF_allUser()
     {
-        $data = [
-            'title' => 'Welcome to RAYHAN KHAN RIDOY ZONE!!!',
-            'date' => date('m/d/Y')
-        ];
+      $allUser = Customer::select('id','username','email','created_at')->get();
 
-        $pdf = PDF::loadView('myPDF', $data);
+        $pdf = PDF::loadView('pdfAllUser', compact('allUser'));
 
-        return $pdf->download('ridoy.pdf');
+        return $pdf->download('allUserRecord.pdf');
+
+
+    }
+
+    public function generatePDF_allEmployee()
+    {
+        $employees = Officer::select('id','name','email','salary','address')->get();
+
+        $pdf = PDF::loadView('pdfAllEmployee', compact('employees'));
+
+        return $pdf->download('allEmpRecord.pdf');
 
 
     }
@@ -40,7 +61,7 @@ class PDFController extends Controller
 
         $pdf = PDF::loadView('pdfAllAdmin', compact('allAd'));
 
-        return $pdf->download('allAdmin.pdf');
+        return $pdf->download('allAdminRecord.pdf');
 
 
     }

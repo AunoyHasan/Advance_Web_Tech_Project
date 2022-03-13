@@ -3,11 +3,13 @@
 
 <center>
 
+
   <div class="tablebody2">
 
     <form action="{{route('searchAdmin')}}" method="GET">
-    <input type="text" name="search" placeholder="Search for admin..">
+    <input type="text" name="search" value="{{$searchVar}}" placeholder="Search for admin..">
     <input type="submit" value="Search">
+    <button type="button" name="back" class="btn btn-success" ><a href="viewAllAdmin"> <h6>Reset</h6> </a>  </button>
     </form>
 
  <h4 class="text-success">All Admins List</h4>
@@ -15,7 +17,7 @@
 <a href="{{ route('generatePDF_allAdmin') }}">
      <img src="css/Downloadpdf.png" height="100px" >
  </a>
- <button type="button" name="back" class="btn btn-success" ><a href="adminDashboard"> <h6>Back to Dashboard</h6> </a>  </button>
+
 </h4>
 <h4 class="text-success" >  {{session()->get('msg2')}} </h4>
 <h4 class="text-success" >  {{session()->get('msg3')}} </h4>
@@ -31,7 +33,7 @@
         <th>Image</th>
         <th>action</th>
     </tr>
-    @foreach($admins as $s)
+    @foreach($admin as $s)
         <tr>
             {{-- <td><a href="{{route('details', ['id' => $s->id,'name'=>$s->name])}}">{{$s->name}}</td> --}}
             <td>{{$s->id}}</td>

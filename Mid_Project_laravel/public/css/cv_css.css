@@ -6,16 +6,19 @@ div
 {
     position: fixed;
     z-index: 1;
-    height:40px;
     width: 100%;
     background-color: rebeccapurple;
-    margin-bottom: 10px
+
     }
 
 #link{
   color:green;
 }
 .tablebody{
+  padding-top: 80px;
+}
+.tablebody2{
+  background-image: linear-gradient(lightcyan, lightgreen,lightcyan);padding-bottom:80px;
   padding-top: 80px;
 }
 
@@ -31,7 +34,7 @@ div
 #email{
     float:right;
     margin-right: 20px;
-	padding-bottom: 10px;
+	padding-bottom: 20px;
 	font-size: 16px;
 	font-family: Verdana, sans-serif;
 	color: #ffffff;
@@ -65,11 +68,25 @@ a:hover {
   color: red;
   background-color: lightcyan;
   font-family:Century Gothic;
-  padding-left: 66px;
+  padding-left: 20px;
 }
 
 .dashAllbody{
 background: url(/css/loginback.png);
+background-position: right;
+}
+
+#nav{
+padding:5px;
+border-style: none;
+font-family: Lucida Bright;
+
+}
+#nav:hover{
+padding:10px;
+background-color: lightgreen;
+border-style: none;
+
 }
 
 h4{
@@ -135,14 +152,19 @@ h3
     }
 table
 {
-  border: 1px solid red;
-  margin-top: 25;
+  border: 1px solid purple;
+
     }
 td
 {
     padding: 2px;
-    border: 1px solid #E88741;
+    border: 1px solid purple;
+
     }
+ul:hover{
+  background-color: orange;
+  padding: 20px;
+}
 
 #course-name
 {

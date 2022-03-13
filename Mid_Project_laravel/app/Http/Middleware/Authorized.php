@@ -19,7 +19,8 @@ class Authorized
 
       if(($request->session()->has('username'))|($request->session()->has('name')))
          return $next($request);
-     else
-         return redirect()->route('adminLogin');
+     else{
+            session()->flash('msg4','At First ,You should do Login to Access this file!');
+           return redirect()->route('adminLogin');}
     }
 }

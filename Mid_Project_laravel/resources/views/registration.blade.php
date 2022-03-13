@@ -1,6 +1,14 @@
 @extends('layout')
 @section('content')
-<form action="registration_submit" method="POST" style="padding-top:50px;" enctype="multipart/form-data">
+<br>
+<br>
+<center>
+
+<div class="tablebody2">
+
+
+<h4 align="center">YOU ARE WELLCOME TO ADMIN REGISTRATION!</h4>
+<form action="registration_submit" method="POST"  enctype="multipart/form-data">
 {{csrf_field()}}
 <p>
   <table border="1" align="center">
@@ -92,7 +100,10 @@
 
 
             </table>
+            <button type="button" name="back" class="btn btn-success" ><a href="adminDashboard"> <h6>Back to Dashboard</h6> </a>  </button>
         </form>
+        </div>
+      </center>
     </body>
 
 
