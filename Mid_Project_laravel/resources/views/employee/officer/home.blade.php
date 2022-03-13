@@ -23,7 +23,7 @@
             
             <tr>
                  <td> 
-                    <a href="{{route('product.home')}}"> Product Pannel</a>
+                    <a href="{{route('product.list')}}"> Product Pannel</a>
                  </td>
             </tr>
 

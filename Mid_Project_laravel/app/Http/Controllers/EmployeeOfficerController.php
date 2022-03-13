@@ -36,12 +36,17 @@ class EmployeeOfficerController extends Controller
             'conf_password.same'=>'Password and confirm password must match'
         ]);
 
+        $filename= $req->name.'.'.$req->file('image')->getClientOriginalExtension();
+        $req->file('image')->storeAs('/public/image/',$filename);
+
         $of = new Officer();
         $of->name = $req->name;
         $of->email = $req->email;
         $of->password = $req->password;
         $of->address = $req->address;
         $of->salary = 5000;
+        $of->image= "storage/image/".$filename;
+        $of->supplier_id = 3;
         //$of->image = 'images/profile.png';
         //$of->image = 'images/profile.png';
         $of->save(); //runs query in db
@@ -110,6 +115,7 @@ class EmployeeOfficerController extends Controller
 
     public function edit(Request $req){
         $of = Officer::where('id',decrypt($req->id))->first();
-        return $of;
+        //return $of;
+        return $of->supplier;
     }
 }

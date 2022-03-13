@@ -2,7 +2,7 @@
 <br><br>    
 <center>   
     <h3>Regiatration</h3> 
-    <form action="{{route('register.submit')}}" method="post">
+    <form action="{{route('register.submit')}}" method="post" enctype="multipart/form-data">
     <div class="col-md-4">
         {{csrf_field()}}
        
@@ -31,7 +31,7 @@
         <span class="text-danger">{{$message}}</span><br>
         @enderror
 
-        <input type="file" name="image" enctype="multipart/form-data">
+        <input type="file" name="image">
         @error('image')
         <span class="text-danger">{{$message}}</span><br>
         @enderror

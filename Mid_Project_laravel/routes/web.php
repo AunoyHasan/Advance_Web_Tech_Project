@@ -38,10 +38,14 @@ Route::get('/officer/home',[EmployeeOfficerController::class,'home'])->name('off
 Route::get('/list',[EmployeeOfficerController::class,'officerList'])->name('officer.list');
 Route::get('/officer/details/{id}/{name}/{email}/{address}/{created_at}',[EmployeeOfficerController::class,'details'])->name('officer.details');
 
-Route::get('/officer/edit/{id}',[EmployeeOfficerController::class,'edit'])->name('officer.edit');
+/// officer edit
+Route::get('/officer/edit/{id}',[EmployeeOfficerController::class,'edit']);
+Route::post('/officer/edit/submit',[EmployeeOfficerController::class,'editSubmit'])->name('officer.edit');
+
 Route::get('/officer/delete/{id}',[EmployeeOfficerController::class,'delete'])->name('officer.delete');
 Route::get('/officer/mail/{id}',[EmployeeOfficerController::class,'mail'])->name('officer.mail');
 
+//officer profile
 Route::get('/officer/profile/{id}/{name}/{email}/{address}/{created_at}',[EmployeeOfficerController::class,'profile'])->name('officer.profile');
 Route::get('/officer/logout',[EmployeeOfficerController::class,'logout'])->name('officer.logout');
 
@@ -54,5 +58,8 @@ Route::get('/product/home',[ProductController::class,'home'])->name('product.hom
 
 Route::get('/product/list',[ProductController::class,'productList'])->name('product.list');
 
+Route::get('/editProduct/{id}',[ProductController::class,'editProduct'])->name('product.edit.abc');
+Route::post('/editProduct',[ProductController::class,'editProductSubmit'])->name('product.edit');
 
 
+Route::get('/delete/product/{id}',[ProductController::class,'productDelete'])->name('product.delete');

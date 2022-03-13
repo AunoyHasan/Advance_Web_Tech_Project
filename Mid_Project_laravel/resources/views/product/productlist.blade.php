@@ -2,10 +2,14 @@
 @section('content')
 <br><br>
 
-<a href={{route('officer.home')}} class="btn btn-primary">Home</a>
-<a href={{route('officer.home')}} class="btn btn-primary">Back</a>
+<a href="{{route('officer.home')}}" class="btn btn-primary">Home</a>
+<a href="{{route('officer.home')}}" class="btn btn-primary">Back</a>
 
-<h1 align="center">Officers listList</h1>
+<h1 align="center">Product List</h1>
+<center>
+<a href="{{route('product.addproduct')}}" class="btn btn-primary"> Add Product</a>
+</center>
+<br>
 <center>
 <table border="1">
     <tr align="center">
@@ -26,9 +30,8 @@
             <td> <img src="{{asset($o->picture)}}" height="100px" width="100px" > </td>
 
             <td>
-                <a class="btn btn-primary" href="{{route('officer.edit',['id'=>encrypt($o->id)])}}">Edit</a>
-                <a class="btn btn-primary" href="{{route('officer.delete',['id'=>encrypt($o->id)])}}">Delete</a>
-                <a class="btn btn-primary" href="{{route('officer.mail',['id'=>encrypt($o->id)])}}">Mail</a>
+                <a class="btn btn-primary" href="{{route('product.edit.abc',['id'=>$o->id])}}">Edit</a>
+                <a class="btn btn-primary" href="{{route('product.delete',['id'=>$o->id])}}">Delete</a>
             </td>
         </tr>
     @endforeach

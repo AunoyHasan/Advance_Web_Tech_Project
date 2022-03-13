@@ -36,6 +36,8 @@
             <th>Registration Date</th>
            <td>{{$created_at}}</td>
         </tr>
+
+
     </table>
 </center>
     <br><br>

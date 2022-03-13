@@ -1,5 +1,9 @@
 @extends('employee.layouts.logreg')
-<br><br>    
+<br>
+<a href="{{route('product.list')}}" class="btn btn-primary">Back</a>
+<a href="{{route('officer.home')}}" class="btn btn-primary">Home</a>
+<h4 align="right"> <a href="{{route('officer.logout')}}" class="btn btn-primary">Logout</a> </h4>
+<br>    
 <center>   
     <h3>Add New Product</h3> 
     <form action="{{route('product.addproduct')}}" method="post" enctype="multipart/form-data">

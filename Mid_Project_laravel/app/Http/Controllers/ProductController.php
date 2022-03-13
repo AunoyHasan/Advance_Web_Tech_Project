@@ -57,4 +57,30 @@ class ProductController extends Controller
         $products = Product::all(); //select * from students and also converts it into collection of student oobject
         return view('product.productlist')->with('products',$products);
     }
+
+    public function editProduct(Request $req){
+        $product = Product::where('id', $req->id)->first();
+
+        //return $product;
+        return view('product.editproduct')->with('product', $product);
+    }
+
+    public function editProductSubmit(Request $req){
+        //$product = Product::where('id', $req->id)->first();
+        $product = Product::where('id', $req->id)->first();
+        $product->pname=$req->pname;
+        $product->quantity=$req->quantity;
+        $product->price=$req->price;
+        $product->category=$req->category;
+        $product->save();
+
+        return redirect ()->route ('product.list');
+    }
+
+    public function productDelete(Request $req){
+
+        $product = Product::where('id',($req->id))->delete();
+        session()->flash('msg3','Product deleted successfully!');
+        return redirect ()->route ('product.list');
+      }
 }
