@@ -32,9 +32,15 @@
             <img src="{{asset('/logo/1.png')}}" height=150px width=150px>
         </td>
         <td>
-            <a href="{{route('c.login')}}">Login</a>
-            <a href="{{route('c.registration')}}">Registration</a>
-                <form method="get" action="{{route('category')}}">
+            <b><a href="{{route('c.login')}}">Login</a>|
+            <a href="{{route('c.registration')}}">Registration</a>|
+            <a href="{{route('cart')}}">Go To Cart</a>|
+            <a href="{{route('c.home')}}">Home</a>|
+            <a href="{{route('logout')}}" method="post">Logout</a></b>
+        </td>
+        <td>
+                <form method="post" action="{{route('category')}}">
+                @csrf
                     <select name="category" id="category" class="2">
                     <option value="ALL" @php if ($category=="ALL") echo "selected"; @endphp>Catagory</option>
                     <option value="ALL" >All Catagory</option>
@@ -50,7 +56,12 @@
         @csrf
             <input type="text" name="search" palceholder="Search Product">
             <input type="submit" name="submit" value="Search">
-        </from>
+        </form>
+        </td>
+        <td>
+        <a href="{{route('edit')}}"><img src="{{asset('/'.'profile.png')}}" height=50px width=50px></a>
+        <br>{{session()->get('username')}}<br>
+        
         </td>
         </tr>
 

@@ -2,15 +2,15 @@
   "ExpandedNodes": [
     "",
     "\\app",
-    "\\app\\Models",
-    "\\public",
+    "\\app\\Http",
+    "\\app\\Http\\Controllers",
     "\\resources",
     "\\resources\\views",
-    "\\resources\\views\\customer",
     "\\resources\\views\\layout",
+    "\\routes",
     "\\storage",
     "\\storage\\app"
   ],
-  "SelectedNode": "\\resources\\views\\customer\\registration.blade.php",
+  "SelectedNode": "\\resources\\views\\customer\\cart.blade.php",
   "PreviewInSolutionExplorer": false
 }

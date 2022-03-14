@@ -1,6 +1,6 @@
 @extends('layout.customerLayout')
 @section('content')
-<form method="post" action="{{route('c.home')}}">
+<form method="post" action="{{route('c.login.p')}}">
 	<fieldset>
     @csrf
 		<legend>LOGIN</legend>
@@ -12,5 +12,6 @@
         <br>
 		<input type="submit" name="submit" value="Login">
 	</fieldset>
+    <h5 style="color:red">{{session()->get('status')}}</h5>
 </form>
 @endsection
