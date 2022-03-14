@@ -4,7 +4,7 @@
 <table border="1">
             <tr> 
                 <td> 
-                    <a href="{{route('officer.logout')}}"> Admin Panel</a> 
+                    <a href="{{route('viewAllAdmin')}}"> Admin Panel</a> 
                 </td>
             </tr>
             

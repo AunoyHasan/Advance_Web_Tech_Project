@@ -30,6 +30,7 @@
         <span class="text-danger">{{$message}}</span><br>
         @enderror
 
+        Plase give Product Picture
         <input type="file" name="picture">
         @error('picture')
         <span class="text-danger">{{$message}}</span><br>

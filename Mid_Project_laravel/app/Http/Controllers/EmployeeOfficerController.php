@@ -42,7 +42,7 @@ class EmployeeOfficerController extends Controller
         $of = new Officer();
         $of->name = $req->name;
         $of->email = $req->email;
-        $of->password = $req->password;
+        $of->password = md5($req->password);
         $of->address = $req->address;
         $of->salary = 5000;
         $of->image= "storage/image/".$filename;
@@ -59,8 +59,29 @@ class EmployeeOfficerController extends Controller
         return view('employee.officer.login');
     }
 
+    // public function loginsubmit(Request $req){
+    //     $of = Officer::where('name', $req->name)->where('password', $req->password)->first();
+    //     //dd($of);
+    //     if($of){
+    //         session()->put('logged', $of->name);
+    //         return redirect()->route('officer.home');
+    //     }
+
+    //      session()->flash('msg', 'username password invalid');
+    //      return redirect()->route('login.submit');
+    // }
+
     public function loginsubmit(Request $req){
-        $of = Officer::where('name', $req->name)->where('password', $req->password)->first();
+        $this->validate($req,
+            [
+                'name'=>'required|regex:/^[A-Z a-z]+$/',
+                'password'=>'required|min:4',
+            ],
+            [
+                'name.required'=>'Please provide name',
+            ]
+        );
+        $of = Officer::where('name', $req->name)->where('password', md5($req->password))->first();
         //dd($of);
         if($of){
             session()->put('logged', $of->name);

@@ -31,6 +31,7 @@
         <span class="text-danger">{{$message}}</span><br>
         @enderror
 
+        Please give Profile Picture
         <input type="file" name="image">
         @error('image')
         <span class="text-danger">{{$message}}</span><br>

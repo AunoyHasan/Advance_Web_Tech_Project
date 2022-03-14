@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\EmployeeOfficerController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\AadminRegistrationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,9 +34,9 @@ Route::post('/login',[EmployeeOfficerController::class,'loginsubmit'])->name('lo
 //reset password
 //Route::get('/password',[EmployeeOfficerController::class,'resetPassword'])->name('officer.password');
 
-Route::get('/officer/home',[EmployeeOfficerController::class,'home'])->name('officer.home');
+Route::get('/officer/home',[EmployeeOfficerController::class,'home'])->name('officer.home')->middleware('officerAuthorized');
 
-Route::get('/list',[EmployeeOfficerController::class,'officerList'])->name('officer.list');
+Route::get('/list',[EmployeeOfficerController::class,'officerList'])->name('officer.list')->middleware('officerAuthorized');
 Route::get('/officer/details/{id}/{name}/{email}/{address}/{created_at}',[EmployeeOfficerController::class,'details'])->name('officer.details');
 
 /// officer edit
@@ -46,20 +47,25 @@ Route::get('/officer/delete/{id}',[EmployeeOfficerController::class,'delete'])->
 Route::get('/officer/mail/{id}',[EmployeeOfficerController::class,'mail'])->name('officer.mail');
 
 //officer profile
-Route::get('/officer/profile/{id}/{name}/{email}/{address}/{created_at}',[EmployeeOfficerController::class,'profile'])->name('officer.profile');
+Route::get('/officer/profile/{id}/{name}/{email}/{address}/{created_at}',[EmployeeOfficerController::class,'profile'])->name('officer.profile')->middleware('officerAuthorized');
 Route::get('/officer/logout',[EmployeeOfficerController::class,'logout'])->name('officer.logout');
 
 
 //Product Controller
-Route::get('/addproduct',[ProductController::class,'addProduct']);
+Route::get('/addproduct',[ProductController::class,'addProduct'])->middleware('officerAuthorized');
 Route::post('/addproduct',[ProductController::class,'addProductSubmit'])->name('product.addproduct');
 
 Route::get('/product/home',[ProductController::class,'home'])->name('product.home');
 
-Route::get('/product/list',[ProductController::class,'productList'])->name('product.list');
+Route::get('/product/list',[ProductController::class,'productList'])->name('product.list')->middleware('officerAuthorized');
 
-Route::get('/editProduct/{id}',[ProductController::class,'editProduct'])->name('product.edit.abc');
+Route::get('/editProduct/{id}',[ProductController::class,'editProduct'])->name('product.edit.abc')->middleware('officerAuthorized');
 Route::post('/editProduct',[ProductController::class,'editProductSubmit'])->name('product.edit');
 
 
 Route::get('/delete/product/{id}',[ProductController::class,'productDelete'])->name('product.delete');
+
+
+
+///AdminConterller
+Route::get('/viewAllAdmin',[AadminRegistrationController::class,'viewAllAdmin'])->name('viewAllAdmin');
