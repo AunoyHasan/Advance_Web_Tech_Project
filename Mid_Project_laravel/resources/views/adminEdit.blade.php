@@ -2,6 +2,7 @@
 @section('content')
 <br>
 <br>
+
 <br>
 <h4 align="center"> EDIT YOUR REQUIRED FIELDS!</h4>
 <form action="{{route('adminEditSubmit')}}" method="POST"  enctype="multipart/form-data">
@@ -82,10 +83,12 @@
 
                 <td ><input type="submit" class="btn btn-success"value="Submit">
                 </td>
+
             </tr>
 
 
             </table>
+
         </form>
 
 

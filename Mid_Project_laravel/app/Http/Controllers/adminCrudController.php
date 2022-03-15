@@ -17,9 +17,10 @@ class adminCrudController extends Controller
     }
 
    public function adminEdit(Request $req){
-                   $admin = Adminregistration::where('id',decrypt($req->id))->select('id','name','username','email','gender','pro_pic')->first();
-
+                   $admin = Adminregistration::where('id',decrypt($req->id))->first();
+//dd($admin->branche);
                    return view('adminEdit')->with('admin',$admin);
+
   }
 
 

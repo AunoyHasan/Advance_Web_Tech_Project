@@ -33,10 +33,11 @@ class GoogleController extends Controller
             $finduser = User::where('google_id', $user->id)->first();
 
             if($finduser){
-
-                Auth::login($finduser);
                 session()->flush();
+                Auth::login($finduser);
+
                 session()->put('name',$finduser->name);
+                session()->put('g_id',$finduser->id);
 
                 session()->flash('msg','login successful with existing google account!');
                 return redirect()->route('adminDashboard');

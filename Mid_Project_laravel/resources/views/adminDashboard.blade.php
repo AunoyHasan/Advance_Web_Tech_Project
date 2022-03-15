@@ -1,5 +1,7 @@
 @extends('layout')
 @section('content')
+
+
 <center>
 <br>
 
@@ -29,7 +31,10 @@
 
 
 <br>
-<h4 class="text-success"> WELLCOME IN ADMIN DASHBOARD</h4>
+@if(session()->has('username'))
+<h4 class="text-success"> WELLCOME IN ADMIN DASHBOARD FOR <h5>{{ $branchInfo->bname  }}, BRANCH</h5></h4>
+<h7 class="text-success">Branch-email: {{ $branchInfo->email  }} </h7>
+@endif
 <br>
 <br>
 <p>
