@@ -82,5 +82,5 @@ class ProductController extends Controller
         $product = Product::where('id',($req->id))->delete();
         session()->flash('msg3','Product deleted successfully!');
         return redirect ()->route ('product.list');
-      }
+    }
 }

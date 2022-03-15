@@ -1,7 +1,7 @@
 @extends('employee.layouts.loggedin')
 @section('content')
 
-<table border="1">
+<table border="1" style="margin-top:100px;background-color:cyan;height:350px">
             <tr> 
                 <td> 
                     <a href="{{route('viewAllAdmin')}}"> Admin Panel</a> 
@@ -29,13 +29,13 @@
 
             <tr>
                  <td> 
-                    <a href="{{route('officer.logout')}}"> Currier Pannel</a> 
+                    <a href="{{route('customerList')}}"> Customer Pannel</a> 
                 </td>
             </tr>
 
             <tr>
                 <td> 
-                    <a href="{{route('officer.logout')}}"> Setting </a> 
+                    <a href="{{route('officer.setting')}}"> Setting </a> 
                 </td>
             </tr>
 

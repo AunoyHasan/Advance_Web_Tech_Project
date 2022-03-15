@@ -7,6 +7,8 @@ use App\Http\Controllers\ProductController;
 
 use App\Models\Officer;
 use App\Models\Supplier;
+use App\Models\Adminregistration;
+
 
 use Session;
 
@@ -139,4 +141,41 @@ class EmployeeOfficerController extends Controller
         //return $of;
         return $of->supplier;
     }
+
+    public function setting(){
+        return view('employee.officer.setting');
+    }
+
+    public function changePassword(Request $req){
+
+    }
+
+    // public function searchOfficer(Request $req){
+    //     if($req->search != ""){
+    //       $searchVar=$req->search; //for see what is searching in search box
+    //       //dd($search);
+    //       $admin = Adminregistration::where('username',"LIKE", "%{$req->search}%")->get();
+    //       return view('employee.officer.list')
+    //       ->with("searchVar",$searchVar)
+    //       ->with("admin",$admin);
+    //     }
+    //     else {
+    //       return back();
+    //     }
+    // }  
+    
+    public function searchOfficer(Request $req){
+        if($req->search != ""){
+          $searchVar=$req->search; //for see what is searching in search box
+          //dd($search);
+          $officers = Officer::where('name',"LIKE", "%{$req->search}%")->get();
+          return view('employee.officer.list')
+          ->with("searchVar",$searchVar)
+          ->with("officers",$officers);
+        }
+        else {
+          return back();
+        }
+    }  
+
 }

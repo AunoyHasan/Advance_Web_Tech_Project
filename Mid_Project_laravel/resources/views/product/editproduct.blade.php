@@ -1,7 +1,13 @@
-@extends('employee.layouts.logreg')
+@extends('employee.layouts.content')
+@section('content')
+<br>
+
+<a href="{{route('officer.home')}}" class="btn btn-primary">Home</a>
+<a href="{{route('officer.home')}}" class="btn btn-primary">Back</a>
+<h4 align="right"> <a href="{{route('officer.logout')}}" class="btn btn-primary">Logout</a> </h4>
 <br><br>    
 <center>   
-    <h3>Add New Product</h3> 
+    <h3>Edit Product</h3> 
     <form action="{{route('product.edit')}}" method="post">
     <div class="col-md-4">
         {{csrf_field()}}
@@ -29,7 +35,6 @@
         <span class="text-danger">{{$message}}</span><br>
         @enderror
 
-        <br><br>
         <input type="reset" class="btn btn-primary" value="Reset">
         <input type="submit" class="btn btn-primary" value="Add">
 
@@ -37,3 +42,5 @@
 
     </form>
 </center>    
+
+@endsection

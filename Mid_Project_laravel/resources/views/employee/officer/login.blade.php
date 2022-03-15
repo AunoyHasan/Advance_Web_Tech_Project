@@ -7,7 +7,7 @@
         <div class="col-md-4">
             {{csrf_field()}}
             <h3>Login</h3>
-            <input type="text" class="form-control" name="name" placeholder="Name"><br>
+            <input type="text" class="form-control" name="name" value="{{old('name')}}" placeholder="Name"><br>
             @error('name')
         <span class="text-danger">{{$message}}</span><br>
         @enderror

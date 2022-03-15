@@ -8,6 +8,13 @@
 
 <h1 align="center">Officers List</h1>
 <center>
+
+<form action="{{route('officer.search')}}" method="GET">
+    <input type="text" name="search" placeholder="Search for admin..">
+    <input type="submit" value="Search">
+    <button type="button" name="back"  ><a href="{{route('officer.list')}}"> Reset </a> </button>
+</form>
+
 <table border="1">
     <tr align="center">
         <th>Name </th>
