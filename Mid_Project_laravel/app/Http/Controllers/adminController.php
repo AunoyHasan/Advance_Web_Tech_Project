@@ -100,7 +100,7 @@ public function adminLoginSubmit(Request $req){
                                 else{
                                   $all= Adminregistration::all();
                                   $allAdmins=count($all);
-                                  
+
 
                                   $totalMales=Adminregistration::where('gender','Male')->count();
                                   $totalFemales=Adminregistration::where('gender','Female')->count();
@@ -163,6 +163,7 @@ public function adminLoginSubmit(Request $req){
                                 $ad->username = $req->username;
                                 $ad->email = $req->email;
                                 $ad->gender = $req->gender;
+                                $ad->branche_id = $req->branch;;
                                 $ad->pro_pic = "storage/pro_pic/".$filename;
                                 $ad->password = md5($req->conf_password);
                                 $ad->save(); //runs query in db

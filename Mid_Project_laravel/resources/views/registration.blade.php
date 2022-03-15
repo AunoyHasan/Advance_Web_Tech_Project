@@ -65,6 +65,17 @@
     </tr>
     <tr>
         <td>
+          <span>Branch</span>
+        </td>
+        <td> :<input type="radio" name="branch"  value="1" <?php if(old('branch')=="1"){echo 'checked';} ?> >NIKUNJO
+          <input type="radio" name="branch"  value="2" <?php if(old('branch')=="2"){echo 'checked';} ?> >KURATULI
+          @error('gender')
+          <span class="btn btn-danger"> {{$message}}</span>
+          @enderror
+        </td>
+    </tr>
+    <tr>
+        <td>
           <span>Image </span>
         </td>
         <td> :<input type="file"  name="pro_pic"   >

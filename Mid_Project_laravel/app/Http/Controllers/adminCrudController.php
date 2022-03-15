@@ -42,7 +42,7 @@ class adminCrudController extends Controller
             );
 
                   $filename= $req->username.'.'.$req->file('pro_pic')->getClientOriginalExtension();
-                  $req->file('pro_pic')->storeAs('/pro_pic/',$filename);
+                  $req->file('pro_pic')->storeAs('/public/pro_pic/',$filename);
 
 
                 $admin = Adminregistration::where('id',$req->id)->first();

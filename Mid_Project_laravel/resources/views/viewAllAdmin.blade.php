@@ -31,6 +31,7 @@
         <th>Image</th>
         <th>action</th>
     </tr>
+
     @foreach($admins as $s)
         <tr>
             {{-- <td><a href="{{route('details', ['id' => $s->id,'name'=>$s->name])}}">{{$s->name}}</td> --}}
