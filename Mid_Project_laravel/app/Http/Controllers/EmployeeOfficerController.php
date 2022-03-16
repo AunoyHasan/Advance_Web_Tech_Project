@@ -61,18 +61,6 @@ class EmployeeOfficerController extends Controller
         return view('employee.officer.login');
     }
 
-    // public function loginsubmit(Request $req){
-    //     $of = Officer::where('name', $req->name)->where('password', $req->password)->first();
-    //     //dd($of);
-    //     if($of){
-    //         session()->put('logged', $of->name);
-    //         return redirect()->route('officer.home');
-    //     }
-
-    //      session()->flash('msg', 'username password invalid');
-    //      return redirect()->route('login.submit');
-    // }
-
     public function loginsubmit(Request $req){
         $this->validate($req,
             [
@@ -87,12 +75,56 @@ class EmployeeOfficerController extends Controller
         //dd($of);
         if($of){
             session()->put('logged', $of->name);
+            session()->put('pass', md5($req->password));
             return redirect()->route('officer.home');
         }
 
          session()->flash('msg', 'username password invalid');
          return redirect()->route('login.submit');
     }
+
+    public function changePassword(){
+        return view('employee.officer.passwordchange');
+    }
+
+    public function changePasswordSubmit(Request $req)
+    {
+        $this->validate($req,
+        [
+            'password'=>'required|min:4',
+            'new_password'=>'required|min:4',
+            'conf_password'=>'required|same:new_password',
+        ],
+        [
+            'password.required'=>'Please provide current password',
+            'new_password.min'=>'Password contains atleat 4 alphabet',
+            'conf_password.same'=>'Password and confirm password must be same'
+        ]);
+
+        $pass = session()->get('pass');
+        
+        if($pass ==  md5($req->password) ) {
+            if($req->new_password == $req->conf_password){
+                $of = Officer::where('password', $pass)->first();
+                $of->password = md5($req->new_password);
+                $of->save(); //runs query in db
+
+                session()->flash('msg', 'Password Change Succesfully');
+                return redirect()->route('officer.setting');
+
+            }
+            //else{
+                //return "New password and Confirm password are not matched";
+               // session()->flash('msg', 'Password Change Succesfully');
+                //return redirect()->route('fficer.changepassword');
+            //}
+        }
+        else{
+            return "Current password does not match your old passwprd...Please try again...";
+        } 
+    }  
+
+    
 
     public function officerList(){
         $officers = Officer::all(); //select * from students and also converts it into collection of student oobject
@@ -146,10 +178,6 @@ class EmployeeOfficerController extends Controller
         return view('employee.officer.setting');
     }
 
-    public function changePassword(Request $req){
-
-    }
-
     // public function searchOfficer(Request $req){
     //     if($req->search != ""){
     //       $searchVar=$req->search; //for see what is searching in search box
@@ -166,15 +194,23 @@ class EmployeeOfficerController extends Controller
     
     public function searchOfficer(Request $req){
         if($req->search != ""){
-          $searchVar=$req->search; //for see what is searching in search box
-          //dd($search);
-          $officers = Officer::where('name',"LIKE", "%{$req->search}%")->get();
-          return view('employee.officer.list')
-          ->with("searchVar",$searchVar)
-          ->with("officers",$officers);
+            $searchVar=$req->search; //for see what is searching in search box
+            //dd($search);
+            $officers = Officer::where('name',"LIKE", "%{$req->search}%")->get();
+
+            foreach($officers as $of){
+                if($of->name==$searchVar){
+                    return view('employee.officer.list')
+                    ->with("searchVar",$searchVar)
+                    ->with("officers",$officers);
+                }
+                else{
+                    return "<center>"."<h2>".$searchVar." is not found in the Ofiicers List"."</h2>"."</center>";
+                }
+            }
         }
         else {
-          return back();
+            return back();
         }
     }  
 

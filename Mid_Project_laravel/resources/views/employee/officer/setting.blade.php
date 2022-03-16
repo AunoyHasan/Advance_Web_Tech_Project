@@ -8,7 +8,7 @@
 <br>
 <br>
 
-
+@if(Session::has('msg'))<span class="alert alert-info">{{Session::get('msg')}}</span><br><br>@endif
 <h3 align="center"> <a href="{{route('officer.changepassword')}}" class="btn btn-primary">Change Password</a> </h3>
 
 

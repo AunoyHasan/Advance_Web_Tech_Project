@@ -7,6 +7,14 @@
 <h4 align="right"> <a href="{{route('officer.logout')}}" class="btn btn-primary">Logout</a> </h4>
 
 <center>
+<form action="{{route('admin.search')}}" method="GET">
+    <input type="text" name="search" placeholder="Search for product..">
+    <input type="submit" value="Search">
+    <button type="button" name="back"  ><a href="{{route('viewAllAdmin')}}"> Reset </a> </button>
+</form>
+</center>
+
+<center>
 <h4 class="text-success">All Admins List</h4> <br>
 <table border="1">
     <tr align="center">

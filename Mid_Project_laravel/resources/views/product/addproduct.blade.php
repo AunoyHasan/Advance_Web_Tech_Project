@@ -1,4 +1,5 @@
-@extends('employee.layouts.logreg')
+@extends('employee.layouts.content')
+@section('content')
 <br>
 <a href="{{route('product.list')}}" class="btn btn-primary">Back</a>
 <a href="{{route('officer.home')}}" class="btn btn-primary">Home</a>
@@ -30,7 +31,7 @@
         <span class="text-danger">{{$message}}</span><br>
         @enderror
 
-        Plase give Product Picture
+        Plase give Product Picture(jpg & png Only)
         <input type="file" name="picture">
         @error('picture')
         <span class="text-danger">{{$message}}</span><br>
@@ -44,3 +45,4 @@
 
     </form>
 </center>    
+@endsection

@@ -83,4 +83,18 @@ class ProductController extends Controller
         session()->flash('msg3','Product deleted successfully!');
         return redirect ()->route ('product.list');
     }
+
+    public function searchProduct(Request $req){
+        if($req->search != ""){
+          $searchVar=$req->search; //for see what is searching in search box
+          //dd($search);
+          $products = Product::where('pname',"LIKE", "%{$req->search}%")->get();
+          return view('product.productlist')
+          ->with("searchVar",$searchVar)
+          ->with("products",$products);
+        }
+        else {
+          return back();
+        }
+    }  
 }

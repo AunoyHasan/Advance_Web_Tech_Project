@@ -36,7 +36,7 @@
         @enderror
 
         <input type="reset" class="btn btn-primary" value="Reset">
-        <input type="submit" class="btn btn-primary" value="Add">
+        <input type="submit" class="btn btn-primary" value="Update">
 
 </div>    
 

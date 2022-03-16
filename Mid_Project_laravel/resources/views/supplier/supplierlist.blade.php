@@ -5,15 +5,15 @@
 <a href="{{route('officer.home')}}" class="btn btn-primary">Home</a>
 <a href="{{route('officer.home')}}" class="btn btn-primary">Back</a>
 <center>
-<form action="{{route('officer.search')}}" method="GET">
-    <input type="text" name="search" placeholder="Search for officer">
+<form action="{{route('supplier.search')}}" method="GET">
+    <input type="text" name="search" placeholder="Search for supplier">
     <input type="submit" value="Search">
-    <button type="button" name="back"  ><a href="{{route('officer.list')}}"> Reset </a> </button>
+    <button type="button" name="back"  ><a href="{{route('supplier.list')}}"> Reset </a> </button>
 </form>
 </center>
 <br>
 
-<h1 align="center">Officers List</h1>
+<h1 align="center">Supplier List</h1>
 <center>
 
 
@@ -21,15 +21,17 @@
     <tr align="center">
         <th>Name </th>
         <th>Email</th>
+        <th>Salary</th>
         <th>Action</th>
 
     </tr>
-    @foreach($officers as $o)
+    @foreach($supplier as $o)
         <tr align="center">
-            <td><a href="{{route('officer.details',['id'=>$o->id+839, 'name'=>$o->name, 'email'=>$o->email, 'address'=>$o->address, 'created_at'=>$o->created_at])}}">{{$o->name}}</a></td>
+            <td>{{$o->name}}</td>
             <td>{{$o->email}}</td>
+            <td>{{$o->salary}}</td>
             <td>
-                <a class="btn btn-primary" href="{{route('officer.mail',['id'=>encrypt($o->id)])}}">Mail</a>
+                <a class="btn btn-primary" href="{{route('supplier.product.name',['id'=>encrypt($o->id)])}}">Name</a>
             </td>
         </tr>
     @endforeach

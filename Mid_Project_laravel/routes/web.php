@@ -6,6 +6,7 @@ use App\Http\Controllers\EmployeeOfficerController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\AadminRegistrationController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\SupplierController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +29,9 @@ Route::get('/home', function () {
 
 Route::get('/register',[EmployeeOfficerController::class,'register']);
 Route::post('/register',[EmployeeOfficerController::class,'registersubmit'])->name('register.submit');
+
+Route::get('/password',[EmployeeOfficerController::class,'changePassword']);
+Route::post('/password',[EmployeeOfficerController::class,'changePasswordSubmit'])->name('officer.password');
 
 Route::get('/login',[EmployeeOfficerController::class,'login']);
 Route::post('/login',[EmployeeOfficerController::class,'loginsubmit'])->name('login.submit');
@@ -70,15 +74,45 @@ Route::get('/product/list',[ProductController::class,'productList'])->name('prod
 Route::get('/editProduct/{id}',[ProductController::class,'editProduct'])->name('product.edit.abc')->middleware('officerAuthorized');
 Route::post('/editProduct',[ProductController::class,'editProductSubmit'])->name('product.edit')->middleware('officerAuthorized');
 
-
 Route::get('/delete/product/{id}',[ProductController::class,'productDelete'])->name('product.delete');
+
+Route::get('/product/search', [ProductController::class,'searchProduct'])->name('product.search');
 
 
 
 ///AdminConterller
 Route::get('/viewAllAdmin',[AadminRegistrationController::class,'viewAllAdmin'])->name('viewAllAdmin')->middleware('officerAuthorized');
+Route::get('/admin/search', [AadminRegistrationController::class,'searchAdmin'])->name('admin.search');
 
 
 ///Custoemr Controller
 Route::get('/customer/list',[CustomerController::class,'customerList'])->name('customerList')->middleware('officerAuthorized');
 Route::get('/delete/customer/{id}',[CustomerController::class,'customerDelete'])->name('customer.delete');
+Route::get('/customer/search', [CustomerController::class,'searchCustomer'])->name('customer.search');
+
+
+///supplier
+Route::get('/supplier/list',[SupplierController::class,'supplierList'])->name('supplier.list');
+Route::get('/supplier/search', [SupplierController::class,'searchSupplier'])->name('supplier.search');
+//Route::get('/delete/supplier/{id}',[SupplierController::class,'supplierDelete'])->name('supplier.delete');
+Route::get('/register/supplier',[SupplierController::class,'register']);
+Route::post('/register/supplier',[SupplierController::class,'registersubmit'])->name('supplier.register');
+
+Route::get('/login/supplier',[SupplierController::class,'login']);
+Route::post('/login/supplier',[SupplierController::class,'loginsubmit'])->name('supplier.login');
+
+Route::get('/supplier/home',[SupplierController::class,'home'])->name('supplier.home');
+
+Route::get('/supplier/show/{id}',[SupplierController::class,'showProductName'])->name('supplier.product.name');
+
+
+
+///supplier for admin
+Route::get('/supplier/list/officer',[SupplierController::class,'supplierListOfficer'])->name('supplier.list.officer')->middleware('officerAuthorized');
+Route::get('/supplier/search/officer', [SupplierController::class,'searchSupplierOfficer'])->name('supplier.search.officer');
+
+
+
+
+
+

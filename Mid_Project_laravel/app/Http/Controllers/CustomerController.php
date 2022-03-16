@@ -18,4 +18,17 @@ class CustomerController extends Controller
         session()->flash('msg3','Customer deleted successfully!');
         return redirect()->route('customerList');
     }
+    public function searchCustomer(Request $req){
+        if($req->search != ""){
+          $searchVar=$req->search; //for see what is searching in search box
+          //dd($search);
+          $customers = Customer::where('username',"LIKE", "%{$req->search}%")->get();
+          return view('customer.customerlist')
+          ->with("searchVar",$searchVar)
+          ->with("customers",$customers);
+        }
+        else {
+          return back();
+        }
+    }
 }
