@@ -5,6 +5,10 @@
 <a href="{{route('officer.setting')}}" class="btn btn-primary">Back</a>
 <h4 align="right"> <a href="{{route('officer.logout')}}" class="btn btn-primary">Logout</a> </h4>
 
+<center>
+@if(Session::has('msg1'))<span class="alert alert-info" >{{Session::get('msg1')}}</span><br><br>@endif
+</center>
+
 <center>   
     <h3>Change Password</h3> 
     <form action="{{route('officer.password')}}" method="post">

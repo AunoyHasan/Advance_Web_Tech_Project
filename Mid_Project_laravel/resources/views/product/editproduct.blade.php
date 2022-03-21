@@ -30,11 +30,19 @@
         <span class="text-danger">{{$message}}</span><br>
         @enderror
 
-        <input type="text" name="category" class="form-control" value="{{$product->category}}"><br>
+        <label for="cars">Choose the category</label>
+        <select name="category" class="form-control"> 
+            <option value="shirt">Shirt</option>
+            <option value="pant">Pant</option>
+            <option value="oil">Oil</option>
+            <option value="laptop">Laptop</option>
+            <option value="mobile">Mobile</option>
+        </select>
         @error('cetegory')
         <span class="text-danger">{{$message}}</span><br>
         @enderror
 
+        <br>
         <input type="reset" class="btn btn-primary" value="Reset">
         <input type="submit" class="btn btn-primary" value="Update">
 

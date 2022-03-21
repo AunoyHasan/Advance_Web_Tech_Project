@@ -26,11 +26,19 @@
         <span class="text-danger">{{$message}}</span><br>
         @enderror
 
-        <input type="text" name="category" class="form-control" placeholder="Category"><br>
-        @error('cetegory')
+        <label for="cars">Choose the category</label>
+        <select name="category" class="form-control"> 
+            <option value="shirt">Shirt</option>
+            <option value="pant">Pant</option>
+            <option value="oil">Oil</option>
+            <option value="laptop">Laptop</option>
+            <option value="mobile">Mobile</option>
+        </select>
+        @error('category')
         <span class="text-danger">{{$message}}</span><br>
         @enderror
 
+        <br>
         Plase give Product Picture(jpg & png Only)
         <input type="file" name="picture">
         @error('picture')

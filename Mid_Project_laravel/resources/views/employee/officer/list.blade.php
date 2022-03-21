@@ -14,9 +14,8 @@
 <br>
 
 <h1 align="center">Officers List</h1>
+
 <center>
-
-
 <table border="1">
     <tr align="center">
         <th>Name </th>
@@ -29,7 +28,7 @@
             <td><a href="{{route('officer.details',['id'=>$o->id+839, 'name'=>$o->name, 'email'=>$o->email, 'address'=>$o->address, 'created_at'=>$o->created_at])}}">{{$o->name}}</a></td>
             <td>{{$o->email}}</td>
             <td>
-                <a class="btn btn-primary" href="{{route('officer.mail',['id'=>encrypt($o->id)])}}">Mail</a>
+            <a href="{{route('officer.supplier',['id'=>$o->id])}}"> Name </a>
             </td>
         </tr>
     @endforeach
