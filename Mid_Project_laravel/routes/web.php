@@ -30,3 +30,4 @@ Route::get('logout',[customerController::class,'logout'])->name('logout');
 Route::get('edit',[customerController::class,'edit'])->name('edit');
 Route::get('cart',[customerController::class,'cart'])->name('cart');
 Route::post('order',[customerController::class,'order'])->name('order');
+Route::get('piechart',[customerController::class,'piechart'])->name('piechart');

@@ -7,6 +7,7 @@ use App\Models\Customer;
 use App\Models\Product;
 use App\Models\Cart;
 use App\Models\Order;
+use Illuminate\Support\Facades\DB;
 
 class customerController extends Controller
 {
@@ -30,10 +31,17 @@ class customerController extends Controller
                 session()->put('id', $c->id);
                 session()->put('username', $c->username);
                 session()->put('email', $c->email);
-                $p = Product::all();
+               /* $p = Product::all();
                 return view('customer.home')
                 ->with("products",$p)
-                ->with("category","");
+                ->with("category","");*/
+                $p = Product::all();
+               // $c = Product::distinct()->get(['category']);
+               // return $c;
+               return view('customer.home')
+               ->with("products",$p)
+               ->with("category","");
+               //->with("categorys",$c);
             }
             else
             {
@@ -65,10 +73,12 @@ class customerController extends Controller
     }
     public function home(Request $req){
         $p = Product::all();
-
-        return view('customer.home')
+        $c = Product::distinct()->get(['category']);
+       // return $c;
+       return view('customer.home')
         ->with("products",$p)
         ->with("category","");
+        //->with("category",$c);
     }
     public function category(Request $req){
         //return $req->category;
@@ -96,16 +106,24 @@ class customerController extends Controller
     }
     public function addtocart(Request $req)
     {
+        $c = Cart::where('customerId','=',session()->get('id'))->where('pname','=',$req->pname)->first();
+        if($c){      
+        $c->quantity+=1;
+        $c->save();
+        }
+        else{
         $c = new Cart();
         $c->pname = $req->pname;
         $c->price = $req->price;
         $c->quantity = $req->quantity;
         $c->customerId = session()->get('id');
         $c->save();
-        $p = Product::All();
-        return view('customer.home')
+        }
+        /*$p = Product::All();
+        return view('customer.cart')
         ->with("products",$p)
-        ->with("category","");
+        ->with("category","");*/
+        return redirect()->route('cart');
     }
     public function edit(Request $req)
     {
@@ -130,9 +148,14 @@ class customerController extends Controller
     public function cart()
     {
         $p = Cart::where('customerId','=',session()->get('id'))->get();
+        $totalPrice = 0;
+        foreach($p as $eachProduct){//total price
+            $totalPrice = $totalPrice + ($eachProduct->quantity * $eachProduct->price);
+        }
         return view('customer.cart')
         ->with("products",$p)
-        ->with("category","");;
+        ->with("category","")
+        ->with("totalPrice",$totalPrice);
     }
     public function order(Request $req)
     {
@@ -142,7 +165,7 @@ class customerController extends Controller
             $o->quantity = $req->quantity;
             $o->price = $req->price;
             $o->customerId = $req->customerId;
-            $o->status = "In Order Process";
+            $o->status = "Order Processing";
             $o->save();
             $d = Cart::where('id', $req->id)->delete();
         }
@@ -150,6 +173,20 @@ class customerController extends Controller
             $d = Cart::where('id', $req->id)->delete();
         }
         return redirect()->route('cart');
+    }
+    public function piechart()
+    {
+        $values = DB::select(DB::raw("select count(*) as Total_Order, pname as Product_Name from orders group by pname"));
+        //return $value;
+        $ary="";
+        foreach($values as $v){
+            $ary .= "['".$v->Product_Name."',   ".$v->Total_Order."],";
+        }
+        $ary = rtrim($ary,',');
+        //return $ary;
+        return view('customer.piechart')
+        ->with("category","")
+        ->with("values",$ary);
     }
     public function logout()
     {

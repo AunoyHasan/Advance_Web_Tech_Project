@@ -24,4 +24,5 @@
         </tr>
 		@endforeach
 	</table>
+    @if($totalPrice>0)<h1 align="center">Total Price: <span style="color:green">{{$totalPrice}}</span> BDT</h1>@endif
 @endsection

@@ -36,6 +36,7 @@
             <a href="{{route('c.registration')}}">Registration</a>|
             <a href="{{route('cart')}}">Go To Cart</a>|
             <a href="{{route('c.home')}}">Home</a>|
+            <a href="{{route('piechart')}}">Ordered Chart</a>|
             <a href="{{route('logout')}}" method="post">Logout</a></b>
         </td>
         <td>
