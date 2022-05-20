@@ -28,6 +28,7 @@ class adminController extends Controller
   }
 
 public function adminLoginSubmit(Request $req){
+  
                           $this->validate($req,
                               [
 
